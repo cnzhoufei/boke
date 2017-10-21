@@ -1,0 +1,73 @@
+{include file="common/header" /}
+<div class="right" style="height: 571px;">
+	<div class="now" style="width: 1696px;">
+		<a href="javascript:;" class="sel">添加分类</a>
+		<div class="clear"></div>
+	</div>
+	<div class="right_main">
+		<form method="post">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="wenzhang mat20 mab20">
+		<tbody><tr>
+			<td align="right" width="150" class="c666">分类名称：</td>
+			<td><input type="text" name="name" value="" class="inputall input250"></td>
+		</tr>
+		<tr>
+			<td align="right" class="c666">上级分类：</td>
+			<td>
+				<select name="pid" class="inputselect" style="width:262px">
+				<option value="0">=============== 无 ==============</option>
+								<option value="49">时尚女装</option>
+								<option value="51">　 ├ 连衣裙</option>
+								<option value="52">　 ├ T恤</option>
+								<option value="53">　 ├ 上装</option>
+								<option value="54">　 ├ 下装</option>
+								<option value="71">　 　　├ 尺寸</option>
+								<option value="72">　 　　　　├ 超差</option>
+								<option value="73">　 　　　　　　├ 123</option>
+								<option value="74">　 　　　　　　　　├ 234</option>
+								<option value="75">　 　　　　　　　　　　├ 345</option>
+								<option value="76">　 　　　　　　　　　　　　├ 456</option>
+								<option value="55">韩都衣舍</option>
+								<option value="56">　 ├ 连衣裙</option>
+								<option value="57">　 ├ 裤装</option>
+								<option value="58">　 ├ T恤</option>
+								<option value="59">　 ├ 衬衫/雪纺</option>
+								<option value="60">天美意</option>
+								<option value="63">　 ├ 专柜同款</option>
+								<option value="61">　 ├ 清爽凉鞋</option>
+								<option value="62">　 ├ 浅口单鞋</option>
+								<option value="64">　 ├ 深口单鞋</option>
+								</select>
+			</td>
+		</tr>
+		<tr>
+			<td align="right" class="c666">分类排序：</td>
+			<td><input type="text" name="sorting" value="" class="inputall input80"></td>
+		</tr>
+		<tr>
+			<td align="right" class="c666">页面标题：</td>
+			<td><input type="text" name="title" value="" class="inputall input500"> <span class="c888">（SEO选项）</span></td>
+		</tr>
+		<tr>
+			<td align="right" class="c666">页面关键词：</td>
+			<td><input type="text" name="keywords" value="" class="inputall input500"> <span class="c888">（SEO选项）</span></td>
+		</tr>
+		<tr>
+			<td align="right" class="c666">页面描述：</td>
+			<td><textarea name="description" style="width:500px;height:100px;"></textarea> <span class="c888">（SEO选项）</span></td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>
+			{:token()}
+				<input type="submit" name="pesubmit" value="提 交" class="tjbtn">
+			</td>
+		</tr>
+		</tbody>
+		</table>
+		</form>
+	</div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+{include file="common/header" /}
+<div class="right" style="height: 571px;">
+	<div class="now" style="width: 1679px;">
+		<a href="{:url('Classification/index')}" class="sel">分类列表（29）</a>
+		<a href="{:url('Classification/add')}" id="fabu">添加分类</a>
+		<div class="clear"></div>
+	</div>
+	<div class="right_main">
+		<form method="post" id="form">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="list">
+		<tbody><tr>
+			<th class="bgtt" width="20"><input type="checkbox" name="checkall" onclick="pe_checkall(this, &#39;category_id&#39;)"></th>
+			<th class="bgtt" width="50">ID号</th>
+			<th class="bgtt" width="60">排序</th>
+			<th class="bgtt">分类名称</th>
+			<th class="bgtt" width="175">操作</th>
+		</tr>
+				<tr>
+			<td style="background-color: rgb(255, 255, 255);"><input type="checkbox" name="category_id[]" value="49"></td>
+			<td style="background-color: rgb(255, 255, 255);">49</td>
+			<td style="background-color: rgb(255, 255, 255);"><input type="text" name="category_order[49]" value="1" class="inputtext input30 center"></td>
+			<td class="aleft" style="background-color: rgb(255, 255, 255);"><a href="http://phpshe.com/demo/phpshe/product/list-49" target="_blank">时尚女装</a></td>
+			<td style="background-color: rgb(255, 255, 255);">
+				<a href="Modified categories.html" class="admin_edit mar3">修改</a>
+				<a href="http://phpshe.com/demo/phpshe/admin.php?mod=category&amp;act=del&amp;id=49&amp;token=185dbf0e05b36cd40737acb79e73f95c" class="admin_del mar3" onclick="return pe_cfone(this, &#39;删除&#39;)">删除</a>
+				<a href="Transfer goods.html" class="admin_btn" onclick="return pe_dialog(this, &#39;批量转移商品&#39;, 400, 220)">转移商品</a>
+			</td>
+		</tr>
+				
+				</tbody></table>
+		</form>
+	</div>
+	<div class="right_bottom">
+		<span class="fl mal10">
+			<input type="checkbox" name="checkall" onclick="pe_checkall(this, &#39;category_id&#39;)">
+			<button href="admin.php?mod=category&amp;act=del&amp;token=185dbf0e05b36cd40737acb79e73f95c" onclick="return pe_cfall(this, &#39;category_id&#39;, &#39;form&#39;, &#39;批量删除&#39;)">批量删除</button>
+			<button href="admin.php?mod=category&amp;act=order&amp;token=185dbf0e05b36cd40737acb79e73f95c" onclick="pe_doall(this,&#39;form&#39;)">更新排序</button>
+		</span>
+		<span class="fr fenye"></span>
+		<div class="clear"></div>
+	</div>
+</div>
+	<div class="clear"></div>
+	<!--<div class="foot">Copyright <span class="num">©</span> 2008-2014 <a target="_blank" href="http://www.phpshe.com">灵宝简好网络科技有限公司</a> 版权所有</div>-->
+</div>
+<script type="text/javascript">
+function win_init() {
+	$(".left").add(".right").css("height", $(window).height() - $(".pagetop").height());
+	$(".now").css("width", $(".right_main").outerWidth());
+	//$(".right_main").css("height", $(window).height() -  $(".pagetop").height() - $(".now:eq(0)").outerHeight() - $(".right_bottom").outerHeight() + 38);
+}
+$(function(){
+	if ($(".right_bottom").height() == 0) {
+		$(".right_bottom").remove();
+	}
+	win_init();
+	$(window).resize(function() {
+		win_init();
+	});
+	$(".list").find("td").hover(
+		function(){
+			if ($(this).hasClass("bgtt") || $(this).is("[nosel=1]")) return;
+			$(this).parent("tr").children("td[nosel!=1]").css("background-color", "#fbfbfb");
+		},
+		function(){
+			if ($(this).hasClass("bgtt") || $(this).is("[nosel=1]")) return;
+			$(this).parent("tr").children("td[nosel!=1]").css("background-color", "#fff");
+		}
+	)
+})
+pe_loadscript("http://phpshe.com/demo/phpshe/index.php?mod=notice");
+</script>
+
+</body></html>
