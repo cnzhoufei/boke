@@ -1,5 +1,5 @@
 {include file="common/header" /}
-<div class="right" style="height: 571px;">
+<div class="right">
 	<div class="now" style="width: 1679px;">
 		<a href="{:url('Classification/index')}" class="sel">分类列表（29）</a>
 		<a href="{:url('Classification/add')}" id="fabu">添加分类</a>
@@ -7,34 +7,38 @@
 	</div>
 	<div class="right_main">
 		<form method="post" id="form">
-		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="list">
-		<tbody><tr>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="list">
+		<tbody>
+		<tr>
 			<th class="bgtt" width="20"><input type="checkbox" name="checkall" onclick="pe_checkall(this, &#39;category_id&#39;)"></th>
 			<th class="bgtt" width="50">ID号</th>
 			<th class="bgtt" width="60">排序</th>
 			<th class="bgtt">分类名称</th>
 			<th class="bgtt" width="175">操作</th>
 		</tr>
-				<tr>
-			<td style="background-color: rgb(255, 255, 255);"><input type="checkbox" name="category_id[]" value="49"></td>
-			<td style="background-color: rgb(255, 255, 255);">49</td>
-			<td style="background-color: rgb(255, 255, 255);"><input type="text" name="category_order[49]" value="1" class="inputtext input30 center"></td>
-			<td class="aleft" style="background-color: rgb(255, 255, 255);"><a href="http://phpshe.com/demo/phpshe/product/list-49" target="_blank">时尚女装</a></td>
-			<td style="background-color: rgb(255, 255, 255);">
-				<a href="Modified categories.html" class="admin_edit mar3">修改</a>
+		<style type="text/css">.trclass td{background:#f5f1f1  !important;}</style>
+		{foreach $data as $v}
+		<tr class="<?php if($v['layer'] == 1)echo 'trclass';?>">
+			<td><input type="checkbox" value="{$v.id}"></td>
+			<td>{$v.id}</td>
+			<td><input type="text" data-id="{$v.id}" name="sorting" value="{$v.sorting}" class="inputtext input30 center"></td>
+			<td class="aleft" ><a href="" target="_blank"><?php if($v['layer'] != 1){  echo str_repeat("　 ",$v['layer']);} ?>{$v.name}</a></td>
+			<td>
+				<a href="{:url('change',array('id'=>$v['id']))}" class="admin_edit mar3">修改</a>
 				<a href="http://phpshe.com/demo/phpshe/admin.php?mod=category&amp;act=del&amp;id=49&amp;token=185dbf0e05b36cd40737acb79e73f95c" class="admin_del mar3" onclick="return pe_cfone(this, &#39;删除&#39;)">删除</a>
 				<a href="Transfer goods.html" class="admin_btn" onclick="return pe_dialog(this, &#39;批量转移商品&#39;, 400, 220)">转移商品</a>
 			</td>
 		</tr>
-				
-				</tbody></table>
+		{/foreach}		
+	</tbody>
+	</table>
 		</form>
 	</div>
 	<div class="right_bottom">
 		<span class="fl mal10">
 			<input type="checkbox" name="checkall" onclick="pe_checkall(this, &#39;category_id&#39;)">
-			<button href="admin.php?mod=category&amp;act=del&amp;token=185dbf0e05b36cd40737acb79e73f95c" onclick="return pe_cfall(this, &#39;category_id&#39;, &#39;form&#39;, &#39;批量删除&#39;)">批量删除</button>
-			<button href="admin.php?mod=category&amp;act=order&amp;token=185dbf0e05b36cd40737acb79e73f95c" onclick="pe_doall(this,&#39;form&#39;)">更新排序</button>
+			<button href="" onclick="return pe_cfall(this, &#39;category_id&#39;, &#39;form&#39;, &#39;批量删除&#39;)">批量删除</button>
+			<button href="#" onclick="window.location.href='#'">更新排序</button>
 		</span>
 		<span class="fr fenye"></span>
 		<div class="clear"></div>
@@ -68,7 +72,18 @@ $(function(){
 		}
 	)
 })
-pe_loadscript("http://phpshe.com/demo/phpshe/index.php?mod=notice");
+</script>
+<script type="text/javascript">
+
+$('input[name=sorting]').change(function(){
+	var sorting = $(this).val();
+	var id = $(this).attr('data-id');
+	$.post("{:url('sorting')}",{id:id, sorting:sorting},function(res){
+		layer.msg(res.msg);
+	})
+})
+
 </script>
 
-</body></html>
+</body>
+</html>

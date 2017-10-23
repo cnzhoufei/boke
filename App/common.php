@@ -40,3 +40,12 @@ function getstr($strlen=32){
 	}
 	return str_shuffle($string);
 }
+
+
+//中文转换为拼音
+function pinyin($str)
+{
+	import('pinyin.PinYin', VENDOR_PATH, '.php');
+	$PinYin = new py_class();
+	return $PinYin -> str2py($str);
+}

@@ -1,5 +1,5 @@
 {include file="common/header" /}
-<div class="right" style="height: 571px;">
+<div class="right">
 	<div class="now" style="width: 1696px;">
 		<a href="javascript:;" class="sel">添加分类</a>
 		<div class="clear"></div>
@@ -16,33 +16,23 @@
 			<td>
 				<select name="pid" class="inputselect" style="width:262px">
 				<option value="0">=============== 无 ==============</option>
-								<option value="49">时尚女装</option>
-								<option value="51">　 ├ 连衣裙</option>
-								<option value="52">　 ├ T恤</option>
-								<option value="53">　 ├ 上装</option>
-								<option value="54">　 ├ 下装</option>
-								<option value="71">　 　　├ 尺寸</option>
-								<option value="72">　 　　　　├ 超差</option>
-								<option value="73">　 　　　　　　├ 123</option>
-								<option value="74">　 　　　　　　　　├ 234</option>
-								<option value="75">　 　　　　　　　　　　├ 345</option>
-								<option value="76">　 　　　　　　　　　　　　├ 456</option>
-								<option value="55">韩都衣舍</option>
-								<option value="56">　 ├ 连衣裙</option>
-								<option value="57">　 ├ 裤装</option>
-								<option value="58">　 ├ T恤</option>
-								<option value="59">　 ├ 衬衫/雪纺</option>
-								<option value="60">天美意</option>
-								<option value="63">　 ├ 专柜同款</option>
-								<option value="61">　 ├ 清爽凉鞋</option>
-								<option value="62">　 ├ 浅口单鞋</option>
-								<option value="64">　 ├ 深口单鞋</option>
+								{foreach $list as $v}
+									<option value="{$v.id}"><?php if($v['layer'] != 1){  echo str_repeat("　 ",$v['layer']);echo '|-';} ?>{$v.name}</option>
+								{/foreach}
 								</select>
 			</td>
 		</tr>
 		<tr>
 			<td align="right" class="c666">分类排序：</td>
 			<td><input type="text" name="sorting" value="" class="inputall input80"></td>
+		</tr>
+		<tr>
+			<td align="right" class="c666">分类命名：</td>
+			<td><input type="text" name="url" value="" class="inputall input80"><input onclick="pinyi(this)" style="margin-left:10px;" value="pinyi" type="checkbox" />拼音</td>
+		</tr>
+		<tr>
+			<td align="right" class="c666">跳转url：</td>
+			<td><input type="text" name="external" value="" class="inputall input500"> <span class="c888">（跳转链接 不填写为本站链接）</span></td>
 		</tr>
 		<tr>
 			<td align="right" class="c666">页面标题：</td>
@@ -70,4 +60,15 @@
 </div>
 </div>
 </body>
+<script type="text/javascript">
+		function pinyi(obj)
+		{
+			var checked = $(obj).attr('checked');
+			if(checked == 'checked'){
+				$('input[name=url]').css('display','none');
+			}else{
+				$('input[name=url]').css('display','');
+			}
+		}
+</script>
 </html>

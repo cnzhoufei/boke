@@ -2,6 +2,8 @@
 namespace app\admin\controller;
 use think\Controller;
 use think\Db;
+use think\View;
+
 class Common extends Controller
 {
 	protected $beforeActionList = [
@@ -20,7 +22,10 @@ class Common extends Controller
     //空操作
     public function _empty()
     {
-        return view('common/404');
+        $view = new View();
+        return $view->fetch('common/404');
     	
     }
+
+   
 }
