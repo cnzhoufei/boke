@@ -28,7 +28,7 @@
 		</tr>
 		<tr>
 			<td align="right" class="c666">分类命名：</td>
-			<td><input type="text" name="url" value="" class="inputall input80"><input onclick="pinyi(this)" style="margin-left:10px;" value="pinyi" type="checkbox" />拼音</td>
+			<td><input type="text" name="url" value="" class="inputall input80"><input id="pinyissss" onclick="pinyi(this)" style="margin-left:10px;" value="pinyi" type="checkbox" />拼音</td>
 		</tr>
 		<tr>
 			<td align="right" class="c666">跳转url：</td>
@@ -63,8 +63,8 @@
 <script type="text/javascript">
 		function pinyi(obj)
 		{
-			var checked = $(obj).attr('checked');
-			if(checked == 'checked'){
+			var checked = $('#pinyissss')[0].checked;
+			if(checked){
 				$('input[name=url]').css('display','none');
 			}else{
 				$('input[name=url]').css('display','');

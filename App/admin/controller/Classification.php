@@ -45,14 +45,14 @@ class Classification extends Common
 	//修改
 	public function change()
 	{
-		$model = db('classification');
 		if(request()->isPost()){
 			$input = input('post.');
 			$validate = $this->validate($input,'Classification');//验证数据
 			if($validate !== true){
 				$this->error($validate);
 			}
-			$res = $model->where('id',$input['id'])->update($input);
+			$model = new ClassModel('classification');
+			$res = $model->change($input);
 			if($res){
 				$this->success('修改成功',url('/admin/classification/index'));
 			}else{
@@ -61,9 +61,11 @@ class Classification extends Common
 
 		}else{
 			$id = input('id');
+			$model = model('classification');	
 			$data = $model->where('id',$id)->find();
+			if(!$data){$this->error('非法操作');}
 			$this->assign('data',$data);
-			$classlist = $model->order('path')->select();
+			$classlist = $model->where('id','neq',$data['id'])->order('path')->select();
 			$this->assign('list',$classlist);
 			return view();
 		}
@@ -74,7 +76,7 @@ class Classification extends Common
 	{
 		if(request()->isAjax()){
 			$input = input('post.');
-			$res = db('classification')->where('id', $input['id'])
+			$res = db('classification')->where('id', (int)$input['id'])
 		    ->update(['sorting' => $input['sorting']]);
 		    if($res){
 		    	return ['res'=>1,'msg'=>'更新成功'];
@@ -83,6 +85,31 @@ class Classification extends Common
 		    }
 			
 		}else{
+			$this->error('非法操作');
+		}
+	}
+
+
+	//删除
+	public function delete()
+	{
+		if(request()->isAjax()){
+			$input = input('post.');
+			$result = $this->validate(	['id' => $input['id'],'__token__'=>$input['__token__']], ['id' => 'integer|token',]);
+			if(true !== $result){return ['res'=>0,'msg'=>'非法操作'];}
+
+			$data = db('classification')->where('pid',$input['id'])->value('id');
+			if($data){return ['res'=>0,'msg'=>'有子级分类,不可删除！'];}
+
+			$res = db('classification')->where('id',$input['id'])->delete();
+			if($res){
+				return ['res'=>1,'msg'=>'删除成功','token'=>Request()->token()];
+			}else{
+				return ['res'=>0,'msg'=>'删除失败'];
+			}
+
+		}else{
+
 			$this->error('非法操作');
 		}
 	}

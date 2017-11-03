@@ -1,6 +1,7 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:73:"D:\wamp64\www\linfeicn\public/../App/admin\view\classification\index.html";i:1508748959;s:66:"D:\wamp64\www\linfeicn\public/../App/admin\view\common\header.html";i:1508744815;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:73:"D:\wamp64\www\linfeicn\public/../App/admin\view\classification\index.html";i:1508827855;s:66:"D:\wamp64\www\linfeicn\public/../App/admin\view\common\header.html";i:1508829892;}*/ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>后台首页</title>
 <meta name="keywords" content="">
 <meta name="description" content="">
@@ -34,7 +35,7 @@
 				<div class="fenlei">
 			<h3 class="fl_tb1"><s></s>商品中心</h3>
 			<ul>
-								<li class=""><a href="product-list.html"><span>├</span>商品列表</a></li>
+								<li class=""><a href="<?php echo url('Article/index'); ?>"><span>├</span>文章列表</a></li>
 								<li class=""><a href="<?php echo url('Classification/index'); ?>"><span>├</span>分类列表</a></li>
 								<li class=""><a href="Brand management.html"><span>├</span>品牌管理</a></li>
 								<li class=""><a href="Specification management.html"><span>├</span>规格管理</a></li>
@@ -106,14 +107,14 @@
 		</tr>
 		<style type="text/css">.trclass td{background:#f5f1f1  !important;}</style>
 		<?php foreach($data as $v): ?>
-		<tr class="<?php if($v['layer'] == 1)echo 'trclass';?>">
+		<tr class="<?php if($v['layer'] == 1)echo 'trclass';?> tr<?php echo $v['id']; ?>">
 			<td><input type="checkbox" value="<?php echo $v['id']; ?>"></td>
 			<td><?php echo $v['id']; ?></td>
 			<td><input type="text" data-id="<?php echo $v['id']; ?>" name="sorting" value="<?php echo $v['sorting']; ?>" class="inputtext input30 center"></td>
 			<td class="aleft" ><a href="" target="_blank"><?php if($v['layer'] != 1){  echo str_repeat("　 ",$v['layer']);} ?><?php echo $v['name']; ?></a></td>
 			<td>
 				<a href="<?php echo url('change',array('id'=>$v['id'])); ?>" class="admin_edit mar3">修改</a>
-				<a href="http://phpshe.com/demo/phpshe/admin.php?mod=category&amp;act=del&amp;id=49&amp;token=185dbf0e05b36cd40737acb79e73f95c" class="admin_del mar3" onclick="return pe_cfone(this, &#39;删除&#39;)">删除</a>
+				<a href="javascript:;" class="admin_del mar3" onclick="ondelete('<?php echo $v['id']; ?>')">删除</a>
 				<a href="Transfer goods.html" class="admin_btn" onclick="return pe_dialog(this, &#39;批量转移商品&#39;, 400, 220)">转移商品</a>
 			</td>
 		</tr>
@@ -135,6 +136,7 @@
 	<div class="clear"></div>
 	<!--<div class="foot">Copyright <span class="num">©</span> 2008-2014 <a target="_blank" href="http://www.phpshe.com">灵宝简好网络科技有限公司</a> 版权所有</div>-->
 </div>
+<input type="hidden" name="token" value="<?php echo \think\Request::instance()->token(); ?>">
 <script type="text/javascript">
 function win_init() {
 	$(".left").add(".right").css("height", $(window).height() - $(".pagetop").height());
@@ -171,7 +173,23 @@ $('input[name=sorting]').change(function(){
 	})
 })
 
-</script>
 
+function ondelete(id)
+{
+	layer.confirm('你确定要删除吗？', {
+	  btn: ['是的','算了'] //按钮
+	}, function(){
+		$.post("<?php echo url('delete'); ?>",{id:id ,'__token__':$('input[name=token]').val()},function(data){
+			if(data.res == 1){
+				$('.tr'+id).remove();
+				$('input[name=token]').val(data.token)
+			}
+			layer.msg(data.msg)
+		})
+	}, function(){
+		  layer.msg('好玩吗！！！');
+	});
+}
+</script>
 </body>
 </html>

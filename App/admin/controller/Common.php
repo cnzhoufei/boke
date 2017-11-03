@@ -23,7 +23,7 @@ class Common extends Controller
     public function _empty()
     {
         $view = new View();
-        return $view->fetch('common/404');
+        // return $view->fetch('common/404');
     	
     }
 

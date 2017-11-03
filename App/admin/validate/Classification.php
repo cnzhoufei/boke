@@ -10,6 +10,7 @@ class Classification extends Validate
         'name'  	=>  'require|min:2|token',  
         'pid'       =>  'integer',
         'sorting'	=>	'integer',
+        'id'        => 'integer',
     ];
 
     protected $message = [

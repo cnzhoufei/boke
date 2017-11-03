@@ -18,14 +18,14 @@
 		</tr>
 		<style type="text/css">.trclass td{background:#f5f1f1  !important;}</style>
 		{foreach $data as $v}
-		<tr class="<?php if($v['layer'] == 1)echo 'trclass';?>">
+		<tr class="<?php if($v['layer'] == 1)echo 'trclass';?> tr{$v.id}">
 			<td><input type="checkbox" value="{$v.id}"></td>
 			<td>{$v.id}</td>
 			<td><input type="text" data-id="{$v.id}" name="sorting" value="{$v.sorting}" class="inputtext input30 center"></td>
 			<td class="aleft" ><a href="" target="_blank"><?php if($v['layer'] != 1){  echo str_repeat("　 ",$v['layer']);} ?>{$v.name}</a></td>
 			<td>
 				<a href="{:url('change',array('id'=>$v['id']))}" class="admin_edit mar3">修改</a>
-				<a href="http://phpshe.com/demo/phpshe/admin.php?mod=category&amp;act=del&amp;id=49&amp;token=185dbf0e05b36cd40737acb79e73f95c" class="admin_del mar3" onclick="return pe_cfone(this, &#39;删除&#39;)">删除</a>
+				<a href="javascript:;" class="admin_del mar3" onclick="ondelete('{$v['id']}')">删除</a>
 				<a href="Transfer goods.html" class="admin_btn" onclick="return pe_dialog(this, &#39;批量转移商品&#39;, 400, 220)">转移商品</a>
 			</td>
 		</tr>
@@ -47,6 +47,7 @@
 	<div class="clear"></div>
 	<!--<div class="foot">Copyright <span class="num">©</span> 2008-2014 <a target="_blank" href="http://www.phpshe.com">灵宝简好网络科技有限公司</a> 版权所有</div>-->
 </div>
+<input type="hidden" name="token" value="{$Request.token}">
 <script type="text/javascript">
 function win_init() {
 	$(".left").add(".right").css("height", $(window).height() - $(".pagetop").height());
@@ -83,7 +84,23 @@ $('input[name=sorting]').change(function(){
 	})
 })
 
-</script>
 
+function ondelete(id)
+{
+	layer.confirm('你确定要删除吗？', {
+	  btn: ['是的','算了'] //按钮
+	}, function(){
+		$.post("{:url('delete')}",{id:id ,'__token__':$('input[name=token]').val()},function(data){
+			if(data.res == 1){
+				$('.tr'+id).remove();
+				$('input[name=token]').val(data.token)
+			}
+			layer.msg(data.msg)
+		})
+	}, function(){
+		  layer.msg('好玩吗！！！');
+	});
+}
+</script>
 </body>
 </html>

@@ -1,6 +1,7 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:63:"D:\wamp64\www\linfeicn\public/../App/admin\view\common\404.html";i:1508574111;s:66:"D:\wamp64\www\linfeicn\public/../App/admin\view\common\header.html";i:1508744815;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:63:"D:\wamp64\www\linfeicn\public/../App/admin\view\common\404.html";i:1508574111;s:66:"D:\wamp64\www\linfeicn\public/../App/admin\view\common\header.html";i:1508829892;}*/ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>后台首页</title>
 <meta name="keywords" content="">
 <meta name="description" content="">
@@ -34,7 +35,7 @@
 				<div class="fenlei">
 			<h3 class="fl_tb1"><s></s>商品中心</h3>
 			<ul>
-								<li class=""><a href="product-list.html"><span>├</span>商品列表</a></li>
+								<li class=""><a href="<?php echo url('Article/index'); ?>"><span>├</span>文章列表</a></li>
 								<li class=""><a href="<?php echo url('Classification/index'); ?>"><span>├</span>分类列表</a></li>
 								<li class=""><a href="Brand management.html"><span>├</span>品牌管理</a></li>
 								<li class=""><a href="Specification management.html"><span>├</span>规格管理</a></li>

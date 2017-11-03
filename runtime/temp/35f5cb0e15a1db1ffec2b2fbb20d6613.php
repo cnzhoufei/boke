@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:74:"D:\wamp64\www\linfeicn\public/../App/admin\view\classification\change.html";i:1509696898;s:66:"D:\wamp64\www\linfeicn\public/../App/admin\view\common\header.html";i:1508829892;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:64:"D:\wamp64\www\linfeicn\public/../App/admin\view\article\add.html";i:1509697115;s:66:"D:\wamp64\www\linfeicn\public/../App/admin\view\common\header.html";i:1508829892;}*/ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -88,78 +88,109 @@
 			<div class="clear"></div>
 					</div>
 			</div>
-<div class="right">
-	<div class="now" style="width: 1696px;">
-		<a href="javascript:;" class="sel">添加分类</a>
+<style type="text/css">.inputall{width:100%;}</style>
+<div class="right" style="height: 571px;">
+	<div class="now" style="width: 1679px;">
+		<a href="javascript:;" class="sel">添加文章</a>
 		<div class="clear"></div>
 	</div>
 	<div class="right_main">
 		<form method="post">
-		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="wenzhang mat20 mab20">
+		<?php echo token(); ?>
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="wenzhang mat20">
 		<tbody>
 		<tr>
-			<input type="hidden" name="id" value="<?php echo $data['id']; ?>">
-			<td align="right" width="150" class="c666">分类名称：</td>
-			<td><input type="text" name="name" value="<?php echo $data['name']; ?>" class="inputall input250"></td>
+			<td align="right" width="150">文章名称：</td>
+			<td><input type="text" name="name" value="" class="inputall input500"></td>
 		</tr>
 		<tr>
-			<td align="right" class="c666">上级分类：</td>
+			<td align="right" width="150">文章标题：</td>
+			<td><input type="text" name="title" value="" class="inputall input500"></td>
+		</tr>
+		<tr>
+			<td align="right" width="150">文章关键词：</td>
+			<td><input type="text" name="keywords" value="" class="inputall input500"></td>
+		</tr>
+		<tr>
+			<td align="right" width="150">文章外部链接：</td>
+			<td><input type="text" name="external" value="" class="inputall input500"></td>
+		</tr>
+		<tr>
+			<td align="right" width="150">文章命名：</td>
+			<td><input type="text" name="url" value="" class="inputall input500"></td>
+		</tr>
+		<tr>
+			<td align="right" class="c666">文章描述：</td>
+			<td><textarea name="description" style="width:100%;height:100px;"></textarea> <span class="c888">（SEO选项）</span></td>
+		</tr>
+		<tr>
+			<td align="right">文章分类：</td>
 			<td>
-				<select name="pid" class="inputselect" style="width:262px">
-				<option selected value="0">=============== 无 ==============</option>
-								<?php foreach($list as $v): ?>
-									<option <?php if($v['id'] == $data['pid'])echo 'selected';?> value="<?php echo $v['id']; ?>"><?php if($v['layer'] != 1){  echo str_repeat("　 ",$v['layer']);echo '|-';} ?><?php echo $v['name']; ?></option>
-								<?php endforeach; ?>
-								</select>
+				<select name="cid" class="inputselect" style="width:150px;">
+				<?php foreach($classdata as $vv): ?>
+					<option value="<?php echo $vv['id']; ?>"><?php echo str_repeat('——',$vv['layer']); ?><?php echo $vv['name']; ?></option>
+				<?php endforeach; ?>			
+				</select>
 			</td>
 		</tr>
+		<!-- <tr>
+			<td align="right">发布日期：</td>
+			<td><input type="text" name="time" value=""  class="Wdate inputall"></td>
+		</tr> -->
 		<tr>
-			<td align="right" class="c666">分类排序：</td>
-			<td><input type="text" name="sorting" value="<?php echo $data['sorting']; ?>" class="inputall input80"></td>
+			<td align="right">文章缩略图：</td>
+			<td><input type="file" name="img" value="" style="width:50%" class="Wdate inputall"></td>
 		</tr>
 		<tr>
-			<td align="right" class="c666">分类命名：</td>
-			<td><input type="text" name="url" value="<?php echo $data['url']; ?>" class="inputall input80"><input onclick="pinyi(this)" style="margin-left:10px;" value="pinyi" type="checkbox" />拼音</td>
-		</tr>
-		<tr>
-			<td align="right" class="c666">跳转url：</td>
-			<td><input type="text" name="external" value="<?php echo $data['external']; ?>" class="inputall input500"> <span class="c888">（跳转链接 不填写为本站链接）</span></td>
-		</tr>
-		<tr>
-			<td align="right" class="c666">页面标题：</td>
-			<td><input type="text" name="title" value="<?php echo $data['title']; ?>" class="inputall input500"> <span class="c888">（SEO选项）</span></td>
-		</tr>
-		<tr>
-			<td align="right" class="c666">页面关键词：</td>
-			<td><input type="text" name="keywords" value="<?php echo $data['keywords']; ?>" class="inputall input500"> <span class="c888">（SEO选项）</span></td>
-		</tr>
-		<tr>
-			<td align="right" class="c666">页面描述：</td>
-			<td><textarea name="description" style="width:500px;height:100px;"><?php echo $data['description']; ?></textarea> <span class="c888">（SEO选项）</span></td>
-		</tr>
-		<tr>
-			<td>&nbsp;</td>
+			<td align="right">文章详情：</td>
 			<td>
-			<?php echo token(); ?>
-				<input type="submit"  value="提 交" class="tjbtn">
+			<script id="editor" name="body" type="text/plain" style="width:100%;height:500px;"></script>
 			</td>
 		</tr>
-		</tbody>
-		</table>
+		</tbody></table>
+		<div class="mat10 mab10">
+			<input type="submit" value="提 交" class="tjbtn" style="margin-left:435px">
+		</div>
 		</form>
 	</div>
 </div>
-</div>
-</body>
-<script type="text/javascript">
-		function pinyi(obj)
-		{
-			var checked = $(obj).attr('checked');
-			if(checked == 'checked'){
-				$('input[name=url]').css('display','none');
-			}else{
-				$('input[name=url]').css('display','');
-			}
-		}
+	<script type="text/javascript" charset="utf-8" src="/static/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/static/ueditor/ueditor.all.min.js"> </script>
+    <!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
+    <!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
+    <script type="text/javascript" charset="utf-8" src="/static/ueditor/lang/zh-cn/zh-cn.js"></script>
+
+<script type="text/javascript" charset="utf-8">
+var ue = UE.getEditor('editor');
 </script>
-</html>
+	<div class="clear"></div>
+	<!--<div class="foot">Copyright <span class="num">©</span> 2008-2014 <a target="_blank" href="http://www.phpshe.com">灵宝简好网络科技有限公司</a> 版权所有</div>-->
+</div>
+<script type="text/javascript">
+function win_init() {
+	$(".left").add(".right").css("height", $(window).height() - $(".pagetop").height());
+	$(".now").css("width", $(".right_main").outerWidth());
+	//$(".right_main").css("height", $(window).height() -  $(".pagetop").height() - $(".now:eq(0)").outerHeight() - $(".right_bottom").outerHeight() + 38);
+}
+$(function(){
+	if ($(".right_bottom").height() == 0) {
+		$(".right_bottom").remove();
+	}
+	win_init();
+	$(window).resize(function() {
+		win_init();
+	});
+	$(".list").find("td").hover(
+		function(){
+			if ($(this).hasClass("bgtt") || $(this).is("[nosel=1]")) return;
+			$(this).parent("tr").children("td[nosel!=1]").css("background-color", "#fbfbfb");
+		},
+		function(){
+			if ($(this).hasClass("bgtt") || $(this).is("[nosel=1]")) return;
+			$(this).parent("tr").children("td[nosel!=1]").css("background-color", "#fff");
+		}
+	)
+})
+</script>
+
+</body></html>
