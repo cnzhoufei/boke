@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:66:"D:\wamp64\www\linfeicn\public/../App/admin\view\article\index.html";i:1508830398;s:66:"D:\wamp64\www\linfeicn\public/../App/admin\view\common\header.html";i:1508829892;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:66:"D:\wamp64\www\linfeicn\public/../App/admin\view\article\index.html";i:1509783964;s:66:"D:\wamp64\www\linfeicn\public/../App/admin\view\common\header.html";i:1509777566;}*/ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -175,12 +175,13 @@
 			<th class="bgtt" width="80">销量/评价</th>
 			<th class="bgtt" width="100">操作</th>
 		</tr>
-				<tr>
+		<?php if(is_array($data) || $data instanceof \think\Collection || $data instanceof \think\Paginator): $i = 0; $__LIST__ = $data;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?>
+		<tr>
 			<td style="background-color: rgb(255, 255, 255);"><input type="checkbox" name="product_id[]" value="38"></td>
-			<td style="background-color: rgb(255, 255, 255);">38</td>
+			<td style="background-color: rgb(255, 255, 255);"><?php echo $v['id']; ?></td>
 			<td style="background-color: rgb(255, 255, 255);"><input type="text" name="product_order[38]" value="0" class="inputtext input30 center"></td>
-			<td width="40" style="background-color: rgb(255, 255, 255);"><a href="http://phpshe.com/demo/phpshe/product/38" target="_blank"><img src="images/thumb_100x100_20170503141520x.jpg" width="40" height="40" class="imgbg"></a></td>
-			<td class="aleft" style="padding-left: 0px; background-color: rgb(255, 255, 255);"><a href="http://phpshe.com/demo/phpshe/product/38" target="_blank" class="cblue">phpshe测试商品韩版女夏装新款宽松圆领镂空荷叶袖短袖T恤</a></td>
+			<td width="40" style="background-color: rgb(255, 255, 255);"><a href="" target="_blank"><img src="images/thumb_100x100_20170503141520x.jpg" width="40" height="40" class="imgbg"></a></td>
+			<td class="aleft" style="padding-left: 0px; background-color: rgb(255, 255, 255);"><a href="http://phpshe.com/demo/phpshe/product/38" target="_blank" class="cblue"><?php echo $v['name']; ?></a></td>
 			<td style="background-color: rgb(255, 255, 255);">T恤</td>
 			<td style="background-color: rgb(255, 255, 255);">韩都衣舍</td>
 			<td style="background-color: rgb(255, 255, 255);"><span class="num corg">30.0</span></td>
@@ -199,9 +200,10 @@
 				<a href="http://phpshe.com/demo/phpshe/admin.php?mod=product&amp;act=del&amp;id=38&amp;token=185dbf0e05b36cd40737acb79e73f95c" class="admin_del" onclick="return pe_cfone(this, &#39;删除&#39;)">删除</a>
 			</td>
 		</tr>
-
+		<?php endforeach; endif; else: echo "" ;endif; ?>
 				
-				</tbody></table>
+	</tbody>
+	</table>
 		</form>
 	</div>
 	<div class="right_bottom">

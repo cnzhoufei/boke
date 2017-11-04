@@ -8,6 +8,11 @@ class Article extends Common
     //文章列表
     public function index()
     {
+        $articleData = db('article')->order('sorting,id desc')->select();
+        $this->assign('data',$articleData);
+
+        $classData = db('classification')->order('path')->select();
+        $this->assign('classData',$classData);
     	return view();
     }
 
@@ -15,7 +20,7 @@ class Article extends Common
     //添加文章
     public function add()
     {
-    	if(request()->isPost()){
+        if(request()->isPost()){
     		$input = input('post.');
     		$validate = $this->validate($input,'article');//验证
     		if($validate !== true){
@@ -40,6 +45,20 @@ class Article extends Common
             $this->assign('classdata',$classdata);
     		return view();
     	}
+    }
+
+
+
+    public function change()
+    {
+        if(requerst()->isPost()){
+
+
+        }else{
+
+            return view();
+        }
+
     }
 
    

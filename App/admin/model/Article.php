@@ -12,8 +12,6 @@ class Article extends Model
 	public function add($data)
 	{
 		
-		// dump($data);exit;
-
 		$this->data = $data;
 		return $this->allowField(true)->save();
 

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:64:"D:\wamp64\www\linfeicn\public/../App/admin\view\article\add.html";i:1509697115;s:66:"D:\wamp64\www\linfeicn\public/../App/admin\view\common\header.html";i:1508829892;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:64:"D:\wamp64\www\linfeicn\public/../App/admin\view\article\add.html";i:1509776404;s:66:"D:\wamp64\www\linfeicn\public/../App/admin\view\common\header.html";i:1509777566;}*/ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -95,7 +95,7 @@
 		<div class="clear"></div>
 	</div>
 	<div class="right_main">
-		<form method="post">
+		<form method="post" name="article">
 		<?php echo token(); ?>
 		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="wenzhang mat20">
 		<tbody>
@@ -113,7 +113,7 @@
 		</tr>
 		<tr>
 			<td align="right" width="150">文章外部链接：</td>
-			<td><input type="text" name="external" value="" class="inputall input500"></td>
+			<td><input  type="text" name="external" value="" class="inputall input500"></td>
 		</tr>
 		<tr>
 			<td align="right" width="150">文章命名：</td>
@@ -121,7 +121,7 @@
 		</tr>
 		<tr>
 			<td align="right" class="c666">文章描述：</td>
-			<td><textarea name="description" style="width:100%;height:100px;"></textarea> <span class="c888">（SEO选项）</span></td>
+			<td><textarea  name="description" style="width:100%;height:100px;"></textarea> <span class="c888">（SEO选项）</span></td>
 		</tr>
 		<tr>
 			<td align="right">文章分类：</td>
@@ -139,7 +139,11 @@
 		</tr> -->
 		<tr>
 			<td align="right">文章缩略图：</td>
-			<td><input type="file" name="img" value="" style="width:50%" class="Wdate inputall"></td>
+			<td style="position:relative;">
+				<input type="hidden" id="images" name="img" value="" style="width:50%" class="Wdate inputall">
+				<div onclick="upload()"  style="width:150px;cursor:pointer;"><img width="50" src="/static/admin/images/uploadlogo.png"></div>
+				<img src="/static/admin/images/upload.png" class="images" style="height: 100px;position:absolute;left:300px;top:-50px;">
+			</td>
 		</tr>
 		<tr>
 			<td align="right">文章详情：</td>
@@ -193,4 +197,22 @@ $(function(){
 })
 </script>
 
-</body></html>
+<script type="text/javascript">
+
+function upload()
+{
+	layer.open({
+	  type: 2,
+	  title:'请选择一个文件，最大2M(png,jpg,gif)',
+	  area: ['700px', '450px'],
+	  fixed: false, //不固定
+	  maxmin: true,
+	  content: "<?php echo url('Admin/Upload/uploadOne'); ?>",
+	});
+}
+</script>
+
+
+</body>
+
+</html>
