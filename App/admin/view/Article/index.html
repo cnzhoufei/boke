@@ -91,9 +91,9 @@
 			<td style="background-color: rgb(255, 255, 255);"><input type="checkbox" name="product_id[]" value="38"></td>
 			<td style="background-color: rgb(255, 255, 255);">{$v.id}</td>
 			<td style="background-color: rgb(255, 255, 255);"><input type="text" name="product_order[38]" value="0" class="inputtext input30 center"></td>
-			<td width="40" style="background-color: rgb(255, 255, 255);"><a href="" target="_blank"><img src="images/thumb_100x100_20170503141520x.jpg" width="40" height="40" class="imgbg"></a></td>
+			<td width="40" style="background-color: rgb(255, 255, 255);"><a href="" target="_blank"><img src="{$v.img}" width="40" height="40" class="imgbg"></a></td>
 			<td class="aleft" style="padding-left: 0px; background-color: rgb(255, 255, 255);"><a href="http://phpshe.com/demo/phpshe/product/38" target="_blank" class="cblue">{$v.name}</a></td>
-			<td style="background-color: rgb(255, 255, 255);">{}</td>
+			<td style="background-color: rgb(255, 255, 255);">{$classData[ $v['cid'] ]}</td>
 			<td style="background-color: rgb(255, 255, 255);">韩都衣舍</td>
 			<td style="background-color: rgb(255, 255, 255);"><span class="num corg">30.0</span></td>
 			<td class="num" style="background-color: rgb(255, 255, 255);"><span>109</span></td>
@@ -192,7 +192,8 @@ $(function(){
 		}
 	)
 })
-pe_loadscript("http://phpshe.com/demo/phpshe/index.php?mod=notice");
+// pe_loadscript("http://phpshe.com/demo/phpshe/index.php?mod=notice");
 </script>
 
-</body></html>
+</body>
+</html>

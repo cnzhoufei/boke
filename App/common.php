@@ -49,3 +49,7 @@ function pinyin($str)
 	$PinYin = new py_class();
 	return $PinYin -> str2py($str);
 }
+
+
+
+

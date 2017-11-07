@@ -11,7 +11,7 @@ class Article extends Common
         $articleData = db('article')->order('sorting,id desc')->select();
         $this->assign('data',$articleData);
 
-        $classData = db('classification')->order('path')->select();
+        $classData = db('classification')->order('path')->column('id,name');
         $this->assign('classData',$classData);
     	return view();
     }

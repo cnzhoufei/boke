@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:66:"D:\wamp64\www\linfeicn\public/../App/admin\view\article\index.html";i:1509783964;s:66:"D:\wamp64\www\linfeicn\public/../App/admin\view\common\header.html";i:1509777566;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:66:"D:\wamp64\www\linfeicn\public/../App/admin\view\article\index.html";i:1509930647;s:66:"D:\wamp64\www\linfeicn\public/../App/admin\view\common\header.html";i:1509777566;}*/ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -180,9 +180,9 @@
 			<td style="background-color: rgb(255, 255, 255);"><input type="checkbox" name="product_id[]" value="38"></td>
 			<td style="background-color: rgb(255, 255, 255);"><?php echo $v['id']; ?></td>
 			<td style="background-color: rgb(255, 255, 255);"><input type="text" name="product_order[38]" value="0" class="inputtext input30 center"></td>
-			<td width="40" style="background-color: rgb(255, 255, 255);"><a href="" target="_blank"><img src="images/thumb_100x100_20170503141520x.jpg" width="40" height="40" class="imgbg"></a></td>
+			<td width="40" style="background-color: rgb(255, 255, 255);"><a href="" target="_blank"><img src="<?php echo $v['img']; ?>" width="40" height="40" class="imgbg"></a></td>
 			<td class="aleft" style="padding-left: 0px; background-color: rgb(255, 255, 255);"><a href="http://phpshe.com/demo/phpshe/product/38" target="_blank" class="cblue"><?php echo $v['name']; ?></a></td>
-			<td style="background-color: rgb(255, 255, 255);">T恤</td>
+			<td style="background-color: rgb(255, 255, 255);"><?php echo $classData[ $v['cid'] ]; ?></td>
 			<td style="background-color: rgb(255, 255, 255);">韩都衣舍</td>
 			<td style="background-color: rgb(255, 255, 255);"><span class="num corg">30.0</span></td>
 			<td class="num" style="background-color: rgb(255, 255, 255);"><span>109</span></td>
@@ -281,7 +281,8 @@ $(function(){
 		}
 	)
 })
-pe_loadscript("http://phpshe.com/demo/phpshe/index.php?mod=notice");
+// pe_loadscript("http://phpshe.com/demo/phpshe/index.php?mod=notice");
 </script>
 
-</body></html>
+</body>
+</html>

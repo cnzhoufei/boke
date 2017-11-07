@@ -30,6 +30,9 @@ class Upload extends Common
                     $error = $file->getError();
                     $this->assign('error',$error);
                 }
+            }else{
+
+                $this->assign('error','请选择文件');
             }
 
         }

@@ -52,3 +52,11 @@ create table if not exists `linfei_classification`(
    `uptime`TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
    `time` datetime not null default CURRENT_TIMESTAMP COMMENT '添加时间'
    )engine=innodb default charset=utf8;
+
+
+ create table if not exists `yd_isseo`(
+   `id` int unsigned not null auto_increment primary key COMMENT '文章id',
+   `ip` char(20) not null default '' COMMENT '来路ip',
+   `url` text COMMENT '来路url',
+   `time` int unsigned not null default 0
+)engine=innodb default charset=utf8;
