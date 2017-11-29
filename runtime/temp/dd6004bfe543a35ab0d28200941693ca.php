@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:64:"D:\wamp64\www\linfeicn\public/../App/admin\view\login\index.html";i:1508576363;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:64:"D:\wamp64\www\linfeicn\public/../App/admin\view\login\index.html";i:1510387651;}*/ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- saved from url=(0056)http://phpshe.com/demo/phpshe/admin.php?mod=do&act=login -->
 <html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -8,7 +8,8 @@
 <meta name="description" content="">
 <link rel="shortcut icon" type="image/ico" href="favicon.ico">
 <link type="text/css" rel="stylesheet" href="/static/admin/css/style.css">
-<script type="text/javascript" src="/static/admin/js/jquery.js"></script>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<!-- <script type="text/javascript" src="/static/admin/js/jquery.js"></script> -->
 <script type="text/javascript" src="/static/admin/js/global.js"></script>
 <style type="text/css">
 body{background:#3C7DBE url(/static/admin/images/login_bg1.jpg) no-repeat center top; font-family:'Microsoft Yahei','Simsun',"宋体"}

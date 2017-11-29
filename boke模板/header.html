@@ -1,0 +1,37 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    <meta name="author" content="周飞">
+    <meta property="og:title" content="{{$config['title']}}">
+    <meta property="og:site_name" content="{{$config['name']}}">
+    <meta property="og:description" content="{{$config['description']}}">
+    <link rel="icon" href="/favicon.png">
+    <link rel="stylesheet" href="{{$style}}/css/style.css">
+    <style type="text/css">.topnav{{$list['id']}}{background:#298EAF;}</style>
+</head>
+<body>
+    <header>
+        <div>
+			<div id="textlogo">
+				<h1 class="site-name"><a style="font-family: '楷体',Arial,sans-serif;" href="{{$_SERVER['HTTP_HOST']}}" title="{{$config['name']}}">{{$config['name']}}</a></h1>
+				<h2 class="blog-motto">{{$config['company']}}</h2>
+			</div>
+        	<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单"></a></div>
+			<nav class="animated">
+				<ul>
+    					<ul>
+    						<li><a class="topnav" href="http://{{$_SERVER['HTTP_HOST']}}"  title="{{$config['name']}}">{{$config['home']}}</a></li>
+                            <foreach name="classtop" item="v" key="k">
+    						  <li><a class="topnav{{$v['id']}}" href="{{$v['external']|default=$v['url']}}">{{$v['name']}}</a></li>
+                            </foreach>
+    					<li>
+    					<form class="search" action="" method="get" accept-charset="utf-8">
+    						<label>Search</label>
+    						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索">
+    						<input type="hidden" name="q" value="site:blog.devtang.com">
+    					</form>
+    					</li>
+    				</ul>
+			    </ul>
+            </nav>			
+        </div>
+    </header>

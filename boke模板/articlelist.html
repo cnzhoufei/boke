@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>{{$list['title']}}</title> 
+    <meta name="keywords" content="{{$list['keywords']}}" /> 
+    <meta name="description" content="{{$list['description']}}" />
+    <include file="./header" />
+<div id="container">
+      <div id="main">
+        <article classid="4" item="vvv" limit="5" key="key" >
+          <section class="post" itemscope="" itemprop="blogitem">
+              <a href="{{$vvv['url']}}" title="{{$vvv['title']}}" itemprop="url">
+              <h2 style="font-size:130%;font-weight:500;font-family:'楷体',Arial,sans-serif;" itemprop="name">{{:getsubstr($vvv['title'],0,45)}}</h2>
+                     <p itemprop="description">{{:getsubstr($vvv['description'],0,180)}}</p>
+              <time datetime="{{:date('Y-m-d',$article['time'])}}T{{:date('H:i:s',$article['time'])}}.000Z" itemprop="datePublished">{{:date('Y-m-d H:i',$vvv['time'])}}</time>
+            </a>
+          </section>
+        </article>
+          <nav id="page-nav" class="clearfix unexpand">
+          {{$page}}
+            <a class="page-number">共{{$count}}条数据</a>
+          </nav>
+      </div>
+      <div class="openaside" style="top: 80px;"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+      <include file="./right" />
+</div>
+    <include file="./footer" />
+<script type="text/javascript">
+$(function(){
+  $('.num').attr('class','page-number');
+  $('.num').css('color','#2CA6CB');
+
+})
+</script>
